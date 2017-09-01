@@ -43,56 +43,48 @@ class ViewController: UIViewController {
     func setupOrangeViewConstraints() {
         orangeView.translatesAutoresizingMaskIntoConstraints = false
         
-        let orangeViewCenterXConstraint = NSLayoutConstraint(item: orangeView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
+        orangeView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        orangeView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -50.0)
+        orangeView.heightAnchor.constraint(equalToConstant: 57.0)
+        orangeView.widthAnchor.constraint(equalToConstant: 200.0)
         
-        let orangeViewBottomSpaceConstraint = NSLayoutConstraint(item: orangeView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottomMargin, multiplier: 1.0, constant: -50.0)
-        
-        let orangeViewHeightConstraint = NSLayoutConstraint(item: orangeView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 57.0)
-        
-        let orangeViewWidthContraint = NSLayoutConstraint(item: orangeView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
-        
-        view.addConstraints([
-            orangeViewCenterXConstraint,
-            orangeViewBottomSpaceConstraint,
-            orangeViewHeightConstraint,
-            orangeViewWidthContraint])
+        NSLayoutConstraint.activate([
+            orangeView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            orangeView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -50.0),
+            orangeView.heightAnchor.constraint(equalToConstant: 57.0),
+            orangeView.widthAnchor.constraint(equalToConstant: 200.0)
+            ])
     }
     
     func setupPurpleViewConstraints() {
         purpleView.translatesAutoresizingMaskIntoConstraints = false
         
-        let purpleViewLeadingSpaceConstraint = NSLayoutConstraint(item: purpleView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leadingMargin, multiplier: 1.0, constant: 8.0)
+        purpleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0)
+        purpleView.bottomAnchor.constraint(equalTo: orangeView.topAnchor, constant: -8.0)
+        purpleView.trailingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: -8.0)
+        purpleView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 8.0)
         
-        let purpleViewBottomSpaceConstraint = NSLayoutConstraint(item: purpleView, attribute: .bottom, relatedBy: .equal, toItem: orangeView, attribute: .top, multiplier: 1.0, constant: -8.0)
-        
-        let purpleViewTrailingspaceConstraint = NSLayoutConstraint(item: purpleView, attribute: .trailing, relatedBy: .equal, toItem: blueView, attribute: .leading, multiplier: 1.0, constant: -8.0)
-        
-        let purpleViewTopSpaceContraint = NSLayoutConstraint(item: purpleView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 8.0)
-        
-        view.addConstraints([
-            purpleViewLeadingSpaceConstraint,
-            purpleViewTopSpaceContraint,
-            purpleViewBottomSpaceConstraint,
-            purpleViewTrailingspaceConstraint])
+        NSLayoutConstraint.activate([
+            purpleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0),
+            purpleView.bottomAnchor.constraint(equalTo: orangeView.topAnchor, constant: -8.0),
+            purpleView.trailingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: -8.0),
+            purpleView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 8.0)])
     }
     
     func setupBlueViewConstraints() {
         
         blueView.translatesAutoresizingMaskIntoConstraints = false
         
-        let blueViewTopSpaceConstraint = NSLayoutConstraint(item: blueView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 8.0)
+        blueView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 8.0)
+        blueView.bottomAnchor.constraint(equalTo: orangeView.topAnchor, constant: -8.0)
+        blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8.0)
+        blueView.widthAnchor.constraint(equalTo: purpleView.widthAnchor)
         
-        let blueViewBottomSpaceConstraint = NSLayoutConstraint(item: blueView, attribute: .bottom, relatedBy: .equal, toItem: orangeView, attribute: .top, multiplier: 1.0, constant: -8.0)
-        
-        let blueViewTrailingSpaceConstraint = NSLayoutConstraint(item: blueView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailingMargin, multiplier: 1.0, constant: -8.0)
-        
-        let equalWidthConstraints = NSLayoutConstraint(item: blueView, attribute: .width, relatedBy: .equal, toItem: purpleView, attribute: .width, multiplier: 1.0, constant: 0.0)
-        
-        view.addConstraints([
-            blueViewTopSpaceConstraint,
-            blueViewBottomSpaceConstraint,
-            blueViewTrailingSpaceConstraint,
-            equalWidthConstraints])
+        NSLayoutConstraint.activate([
+            blueView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 8.0),
+            blueView.bottomAnchor.constraint(equalTo: orangeView.topAnchor, constant: -8.0),
+            blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8.0),
+            blueView.widthAnchor.constraint(equalTo: purpleView.widthAnchor)])
     }
 
 }
